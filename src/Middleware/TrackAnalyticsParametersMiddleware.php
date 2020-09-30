@@ -1,10 +1,10 @@
 <?php
 
-namespace Spatie\UtmForwarder\Middleware;
+namespace Spatie\AnalyticsTracker\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Spatie\UtmForwarder\TrackedAnalyticsParameters;
+use Spatie\AnalyticsTracker\TrackedAnalyticsParameters;
 
 class TrackAnalyticsParametersMiddleware
 {

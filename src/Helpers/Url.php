@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\UtmForwarder\Helpers;
+namespace Spatie\AnalyticsTracker\Helpers;
 
 use Illuminate\Support\Arr;
 
@@ -8,13 +8,15 @@ class Url
 {
     public static function host(string $url): ?string
     {
-        $parts = parse_url($url) ?: [];
-
-        return Arr::get($parts, 'host');
+        return parse_url($url,  PHP_URL_HOST);
     }
 
     public static function addParameters(string $url, array $parameters = []): string
     {
+        if (! $parameters) {
+            return $url;
+        }
+
         $queryString = http_build_query($parameters);
 
         $glue = parse_url($url, PHP_URL_QUERY) ? '&' : '?';

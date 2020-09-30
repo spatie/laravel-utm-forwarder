@@ -1,10 +1,10 @@
 <?php
 
-namespace Spatie\UtmForwarder;
+namespace Spatie\AnalyticsTracker;
 
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
-use Spatie\UtmForwarder\Helpers\Request as RequestHelper;
+use Spatie\AnalyticsTracker\Helpers\Request as RequestHelper;
 
 class TrackedAnalyticsParameters
 {
@@ -37,12 +37,8 @@ class TrackedAnalyticsParameters
     {
         $parameters = [];
 
-        foreach ($this->trackedParameters as $parameter) {
-            $parameters[$parameter] = $request->get($parameter);
-        }
-
-        if (in_array('referer', $this->trackedParameters)) {
-            $parameters['referer'] = RequestHelper::getCrossDomainReferer($request);
+        foreach ($this->trackedParameters as $parameter => $source) {
+            $parameters[$parameter] = (new $source($request))->get($parameter);
         }
 
         return array_filter($parameters);

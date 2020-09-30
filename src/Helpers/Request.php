@@ -1,23 +1,13 @@
 <?php
 
-namespace Spatie\UtmForwarder\Helpers;
+namespace Spatie\AnalyticsTracker\Helpers;
 
 class Request
 {
-    public static function getCrossDomainReferer(\Illuminate\Http\Request $request): ?string
+    public static function isCrossOrigin(\Illuminate\Http\Request $request): bool
     {
-        $referer = $request->header('referer');
+        $refererHost = Url::host($request->header('referer') ?? '');
 
-        if (is_null($referer)) {
-            return null;
-        }
-
-        $refererHost = Url::host($referer);
-
-        if ($refererHost === $request->getHost()) {
-            return null;
-        }
-
-        return $referer;
+        return $refererHost !== $request->getHost();
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\UtmForwarder;
+namespace Spatie\AnalyticsTracker;
 
-use Spatie\UtmForwarder\Helpers\Url;
+use Spatie\AnalyticsTracker\Helpers\Url;
 
 class AnalyticsTracker
 {
