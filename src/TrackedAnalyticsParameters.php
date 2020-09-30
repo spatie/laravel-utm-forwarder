@@ -4,7 +4,6 @@ namespace Spatie\AnalyticsTracker;
 
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
-use Spatie\AnalyticsTracker\Helpers\Request as RequestHelper;
 
 class TrackedAnalyticsParameters
 {

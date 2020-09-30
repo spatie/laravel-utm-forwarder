@@ -4,7 +4,6 @@ namespace Spatie\AnalyticsTracker\Tests;
 
 use Illuminate\Support\Facades\Session;
 use Spatie\AnalyticsTracker\AnalyticsTracker;
-use Spatie\AnalyticsTracker\TrackedAnalyticsParameters;
 
 class AnalyticsTrackerTest extends TestCase
 {

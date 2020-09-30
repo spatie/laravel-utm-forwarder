@@ -2,8 +2,6 @@
 
 namespace Spatie\AnalyticsTracker\Helpers;
 
-use Illuminate\Support\Arr;
-
 class Url
 {
     public static function host(string $url): ?string
