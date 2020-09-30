@@ -3,8 +3,8 @@
 namespace Spatie\AnalyticsTracker\Tests;
 
 use Illuminate\Http\Request;
-use Spatie\AnalyticsTracker\Sources\RequestParameter;
 use Spatie\AnalyticsTracker\AnalyticsBag;
+use Spatie\AnalyticsTracker\Sources\RequestParameter;
 
 class TrackedAnalyticsParametersTest extends TestCase
 {
