@@ -36,7 +36,7 @@ class AnalyticsBag
     protected function determineFromRequest(Request $request): array
     {
         return collect($this->trackedParameters)
-            ->mapWithKeys(function($trackedParameter) use ($request) {
+            ->mapWithKeys(function ($trackedParameter) use ($request) {
                 $source = new $trackedParameter['source']($request);
 
                 return [$trackedParameter['key'] => $source->get($trackedParameter['key'])];
