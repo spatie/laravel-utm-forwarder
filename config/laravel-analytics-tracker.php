@@ -9,12 +9,30 @@ return [
      * Available sources can be found in the `\Spatie\AnalyticsTracker\Sources` namespace.
      */
     'tracked_parameters' => [
-        'utm_source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
-        'utm_medium' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
-        'utm_campaign' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
-        'utm_term' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
-        'utm_content' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
-        'referer' => \Spatie\AnalyticsTracker\Sources\CrossOriginRequestHeader::class,
+        [
+            'key' => 'utm_source',
+            'source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
+        ],
+        [
+            'key' => 'utm_medium',
+            'source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
+        ],
+        [
+            'key' => 'utm_campaign',
+            'source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
+        ],
+        [
+            'key' => 'utm_term',
+            'source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
+        ],
+        [
+            'key' => 'utm_content',
+            'source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
+        ],
+        [
+            'key' => 'referer',
+            'source' => \Spatie\AnalyticsTracker\Sources\CrossOriginRequestHeader::class,
+        ],
     ],
 
     'session_key' => 'tracked_analytics_parameters',

@@ -36,8 +36,10 @@ class TrackedAnalyticsParameters
     {
         $parameters = [];
 
-        foreach ($this->trackedParameters as $parameter => $source) {
-            $parameters[$parameter] = (new $source($request))->get($parameter);
+        foreach ($this->trackedParameters as $trackedParameter) {
+            $source = new $trackedParameter['source']($request);
+
+            $parameters[$trackedParameter['key']] = $source->get($trackedParameter['key']);
         }
 
         return array_filter($parameters);

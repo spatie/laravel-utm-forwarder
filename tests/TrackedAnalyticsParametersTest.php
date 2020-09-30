@@ -32,7 +32,10 @@ class TrackedAnalyticsParametersTest extends TestCase
         ]);
 
         config()->set('laravel-analytics-tracker.tracked_parameters', [
-            'custom_tracked' => RequestParameter::class,
+            [
+                'key' => 'custom_tracked',
+                'source' => RequestParameter::class,
+            ],
         ]);
 
         app(TrackedAnalyticsParameters::class)->putFromRequest($request);
