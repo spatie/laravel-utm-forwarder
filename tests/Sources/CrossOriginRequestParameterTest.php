@@ -2,9 +2,7 @@
 
 namespace Spatie\AnalyticsTracker\Tests\Sources;
 
-
 use Illuminate\Http\Request;
-use Spatie\AnalyticsTracker\Sources\CrossOriginRequestHeader;
 use Spatie\AnalyticsTracker\Sources\CrossOriginRequestParameter;
 use Spatie\AnalyticsTracker\Tests\TestCase;
 

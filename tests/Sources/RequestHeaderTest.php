@@ -2,7 +2,6 @@
 
 namespace Spatie\AnalyticsTracker\Tests\Sources;
 
-
 use Illuminate\Http\Request;
 use Spatie\AnalyticsTracker\Sources\RequestHeader;
 use Spatie\AnalyticsTracker\Tests\TestCase;
