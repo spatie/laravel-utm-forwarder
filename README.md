@@ -46,7 +46,7 @@ To configure the tracked parameters or how they're mapped on the URL parameters,
 php artisan vendor:publish --provider="Spatie\AnalyticsTracker\AnalyticsTrackerServiceProvider" --tag="config"
 ```
 
-These is the contents of the published config file:
+This is the contents of the published config file:
 
 ```php
 return [
