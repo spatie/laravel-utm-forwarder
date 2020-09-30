@@ -43,7 +43,7 @@ protected $middlewareGroups = [
 To configure the tracked parameters or how they're mapped on the URL parameters, you can publish the config file using:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\AnalyticsTracker\AnalyticsTrackerServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Spatie\AnalyticsTracker\AnalyticsTrackerServiceProvider"
 ```
 
 This is the contents of the published config file:
@@ -60,27 +60,27 @@ return [
     'tracked_parameters' => [
         [
             'key' => 'utm_source',
-            'source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
+            'source' => Spatie\AnalyticsTracker\Sources\RequestParameter::class,
         ],
         [
             'key' => 'utm_medium',
-            'source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
+            'source' => Spatie\AnalyticsTracker\Sources\RequestParameter::class,
         ],
         [
             'key' => 'utm_campaign',
-            'source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
+            'source' => Spatie\AnalyticsTracker\Sources\RequestParameter::class,
         ],
         [
             'key' => 'utm_term',
-            'source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
+            'source' => Spatie\AnalyticsTracker\Sources\RequestParameter::class,
         ],
         [
             'key' => 'utm_content',
-            'source' => \Spatie\AnalyticsTracker\Sources\RequestParameter::class,
+            'source' => Spatie\AnalyticsTracker\Sources\RequestParameter::class,
         ],
         [
             'key' => 'referer',
-            'source' => \Spatie\AnalyticsTracker\Sources\CrossOriginRequestHeader::class,
+            'source' => Spatie\AnalyticsTracker\Sources\CrossOriginRequestHeader::class,
         ],
     ],
 
