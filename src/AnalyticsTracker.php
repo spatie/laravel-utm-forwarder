@@ -6,16 +6,21 @@ use Spatie\AnalyticsTracker\Helpers\Url;
 
 class AnalyticsTracker
 {
-    protected TrackedAnalyticsParameters $trackedAnalyticsParameters;
+    protected AnalyticsBag $analyticsBag;
 
-    public function __construct(TrackedAnalyticsParameters $trackedAnalyticsParameters)
+    public function __construct(AnalyticsBag $analyticsBag)
     {
-        $this->trackedAnalyticsParameters = $trackedAnalyticsParameters;
+        $this->analyticsBag = $analyticsBag;
     }
 
-    public function formatUrl(string $url): string
+    public function get(): array
     {
-        $analyticsParameters = $this->trackedAnalyticsParameters->get();
+        return $this->analyticsBag->get();
+    }
+
+    public function decorateUrl(string $url): string
+    {
+        $analyticsParameters = $this->analyticsBag->get();
         $analyticsParameters = $this->mapParametersToUrlParameters($analyticsParameters);
 
         return Url::addParameters($url, $analyticsParameters);

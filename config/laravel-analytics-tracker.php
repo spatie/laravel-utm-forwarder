@@ -35,6 +35,9 @@ return [
         ],
     ],
 
+    /**
+     * We'll put the tracked parameters in the session using this key.
+     */
     'session_key' => 'tracked_analytics_parameters',
 
     /*

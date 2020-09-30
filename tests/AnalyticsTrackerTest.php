@@ -12,7 +12,7 @@ class AnalyticsTrackerTest extends TestCase
     {
         $url = 'https://spatie.be/';
 
-        $formattedUrl = app(AnalyticsTracker::class)->formatUrl($url);
+        $formattedUrl = app(AnalyticsTracker::class)->decorateUrl($url);
 
         $this->assertEquals($url, $formattedUrl);
     }
@@ -24,7 +24,7 @@ class AnalyticsTrackerTest extends TestCase
             'utm_source' => 'https://laravel-news.com/',
         ]);
 
-        $formattedUrl = app(AnalyticsTracker::class)->formatUrl('https://spatie.be/');
+        $formattedUrl = app(AnalyticsTracker::class)->decorateUrl('https://spatie.be/');
 
         $this->assertEquals('https://spatie.be/?utm_source=https%3A%2F%2Flaravel-news.com%2F', $formattedUrl);
     }
@@ -40,7 +40,7 @@ class AnalyticsTrackerTest extends TestCase
             'utm_source' => 'custom_source',
         ]);
 
-        $formattedUrl = app(AnalyticsTracker::class)->formatUrl('https://spatie.be/');
+        $formattedUrl = app(AnalyticsTracker::class)->decorateUrl('https://spatie.be/');
 
         $this->assertEquals('https://spatie.be/?custom_source=https%3A%2F%2Flaravel-news.com%2F', $formattedUrl);
     }

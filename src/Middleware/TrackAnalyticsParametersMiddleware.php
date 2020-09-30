@@ -4,20 +4,20 @@ namespace Spatie\AnalyticsTracker\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Spatie\AnalyticsTracker\TrackedAnalyticsParameters;
+use Spatie\AnalyticsTracker\AnalyticsBag;
 
 class TrackAnalyticsParametersMiddleware
 {
-    protected TrackedAnalyticsParameters $trackedAnalyticsParameters;
+    protected AnalyticsBag $analyticsBag;
 
-    public function __construct(TrackedAnalyticsParameters $trackedAnalyticsParameters)
+    public function __construct(AnalyticsBag $analyticsBag)
     {
-        $this->trackedAnalyticsParameters = $trackedAnalyticsParameters;
+        $this->analyticsBag = $analyticsBag;
     }
 
     public function handle(Request $request, Closure $next)
     {
-        $this->trackedAnalyticsParameters->putFromRequest($request);
+        $this->analyticsBag->putFromRequest($request);
 
         return $next($request);
     }

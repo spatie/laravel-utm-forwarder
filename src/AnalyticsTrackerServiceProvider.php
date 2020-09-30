@@ -20,8 +20,8 @@ class AnalyticsTrackerServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/laravel-analytics-tracker.php', 'laravel-analytics-tracker');
 
-        $this->app->singleton(TrackedAnalyticsParameters::class, function ($app) {
-            return new TrackedAnalyticsParameters(
+        $this->app->singleton(AnalyticsBag::class, function ($app) {
+            return new AnalyticsBag(
                 $app->make(Session::class),
                 config('laravel-analytics-tracker.tracked_parameters'),
                 config('laravel-analytics-tracker.session_key'),

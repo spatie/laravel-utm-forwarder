@@ -1,11 +1,10 @@
-# Keeps track of the original UTM parameters
+# Keeps track of the original UTM (or other analytics) parameters
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-analytics-tracker.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-analytics-tracker)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-analytics-tracker/run-tests?label=tests)](https://github.com/spatie/laravel-analytics-tracker/actions?query=workflow%3Arun-tests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-analytics-tracker.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-analytics-tracker)
 
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Cross domain analytics is hard. This package helps you to keep track of the visitor's original UTM parameters, referer header and other analytics parameters. You can then submit these parameters along with a form submission or add them to a link to another domain you track.
 
 ## Support us
 
@@ -25,30 +24,54 @@ You can install the package via composer:
 composer require spatie/laravel-analytics-tracker
 ```
 
-You can publish and run the migrations with:
+The package works via a middleware that needs to be added to the `web` stack in your `kernel.php` file. Make sure to register this middleware after the `StartSession` middleware.
 
-```bash
-php artisan vendor:publish --provider="Spatie\AnalyticsTracker\AnalyticsTrackerServiceProvider" --tag="migrations"
-php artisan migrate
+```php
+// app/Http/Kernel.php
+
+protected $middlewareGroups = [
+    'web' => [
+        // ...
+        \Illuminate\Session\Middleware\StartSession::class,
+        // ...
+
+        \Spatie\AnalyticsTracker\Middleware\TrackAnalyticsParametersMiddleware::class,
+    ],
+];
 ```
 
-You can publish the config file with:
+To configure the tracked parameters or how they're mapped on the URL parameters, you can publish the config file using:
+
 ```bash
 php artisan vendor:publish --provider="Spatie\AnalyticsTracker\AnalyticsTrackerServiceProvider" --tag="config"
 ```
 
-This is the contents of the published config file:
+These are the contents of the published config file:
 
 ```php
 return [
+    // TODO
 ];
 ```
 
 ## Usage
 
-``` php
-$laravel-analytics-tracker = new Spatie\AnalyticsTracker();
-echo $laravel-analytics-tracker->echoPhrase('Hello, Spatie!');
+The easiest way to retrieve the tracked parameters is by resolving the `TrackedAnalyticsParameters` class:
+
+```php
+use Spatie\AnalyticsTracker\AnalyticsBag;
+
+app(AnalyticsBag::class)->get(); // returns an array of tracked parameters
+```
+
+You can also decorate an existing URL with the tracked parameters. This is useful to forward analytics to another domain you're running analytics on.
+
+```blade
+<a href="{{ app(\Spatie\AnalyticsTracker\AnalyticsTracker::class)->decorateUrl('https://mywebshop.com/') }}">
+    Buy this product on our webshop
+</a>
+
+Will link to https://mywebshop.com?utm_source=facebook&utm_campaign=blogpost
 ```
 
 ## Testing

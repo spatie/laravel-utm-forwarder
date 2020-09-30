@@ -4,7 +4,7 @@ namespace Spatie\AnalyticsTracker\Tests;
 
 use Illuminate\Http\Request;
 use Spatie\AnalyticsTracker\Sources\RequestParameter;
-use Spatie\AnalyticsTracker\TrackedAnalyticsParameters;
+use Spatie\AnalyticsTracker\AnalyticsBag;
 
 class TrackedAnalyticsParametersTest extends TestCase
 {
@@ -16,7 +16,7 @@ class TrackedAnalyticsParametersTest extends TestCase
             'utm_source' => 'https://google.com/',
         ]);
 
-        app(TrackedAnalyticsParameters::class)->putFromRequest($request);
+        app(AnalyticsBag::class)->putFromRequest($request);
 
         $this->assertEquals([
             'utm_source' => 'https://google.com/',
@@ -38,7 +38,7 @@ class TrackedAnalyticsParametersTest extends TestCase
             ],
         ]);
 
-        app(TrackedAnalyticsParameters::class)->putFromRequest($request);
+        app(AnalyticsBag::class)->putFromRequest($request);
 
         $this->assertEquals([
             'custom_tracked' => 'https://google.com/',
@@ -51,7 +51,7 @@ class TrackedAnalyticsParametersTest extends TestCase
         $request = new Request();
         $request->headers->add(['Referer' => 'spatie.be']);
 
-        app(TrackedAnalyticsParameters::class)->putFromRequest($request);
+        app(AnalyticsBag::class)->putFromRequest($request);
 
         $this->assertEquals([
             'referer' => 'spatie.be',

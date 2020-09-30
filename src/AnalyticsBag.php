@@ -5,10 +5,11 @@ namespace Spatie\AnalyticsTracker;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
-class TrackedAnalyticsParameters
+class AnalyticsBag
 {
     protected Session $session;
 
+    /** @var array[]|string[][] */
     protected array $trackedParameters;
 
     protected string $sessionKey;
