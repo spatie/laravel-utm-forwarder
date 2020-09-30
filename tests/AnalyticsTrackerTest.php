@@ -20,7 +20,7 @@ class AnalyticsTrackerTest extends TestCase
     /** @test */
     public function it_can_format_an_url_with_tracked_parameters()
     {
-        Session::put(config('laravel-analytics-tracker.session_key'), [
+        Session::put(config('analytics-tracker.session_key'), [
             'utm_source' => 'https://laravel-news.com/',
         ]);
 
@@ -32,11 +32,11 @@ class AnalyticsTrackerTest extends TestCase
     /** @test */
     public function it_can_format_an_url_with_tracked_and_mapped_parameters()
     {
-        Session::put(config('laravel-analytics-tracker.session_key'), [
+        Session::put(config('analytics-tracker.session_key'), [
             'utm_source' => 'https://laravel-news.com/',
         ]);
 
-        config()->set('laravel-analytics-tracker.parameter_url_mapping', [
+        config()->set('analytics-tracker.parameter_url_mapping', [
             'utm_source' => 'custom_source',
         ]);
 

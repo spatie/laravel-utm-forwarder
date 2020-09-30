@@ -28,7 +28,7 @@ class AnalyticsTracker
 
     protected function mapParametersToUrlParameters(array $parameters): array
     {
-        $mapping = config('laravel-analytics-tracker.parameter_url_mapping');
+        $mapping = config('analytics-tracker.parameter_url_mapping');
 
         return collect($parameters)
             ->mapWithKeys(fn (string $value, string $parameter) => [$mapping[$parameter] ?? $parameter => $value])

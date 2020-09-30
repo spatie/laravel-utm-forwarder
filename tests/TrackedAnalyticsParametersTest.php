@@ -20,7 +20,7 @@ class TrackedAnalyticsParametersTest extends TestCase
 
         $this->assertEquals([
             'utm_source' => 'https://google.com/',
-        ], session()->get(config('laravel-analytics-tracker.session_key')));
+        ], session()->get(config('analytics-tracker.session_key')));
     }
 
     /** @test */
@@ -31,7 +31,7 @@ class TrackedAnalyticsParametersTest extends TestCase
             'custom_tracked' => 'https://google.com/',
         ]);
 
-        config()->set('laravel-analytics-tracker.tracked_parameters', [
+        config()->set('analytics-tracker.tracked_parameters', [
             [
                 'key' => 'custom_tracked',
                 'source' => RequestParameter::class,
@@ -42,7 +42,7 @@ class TrackedAnalyticsParametersTest extends TestCase
 
         $this->assertEquals([
             'custom_tracked' => 'https://google.com/',
-        ], session()->get(config('laravel-analytics-tracker.session_key')));
+        ], session()->get(config('analytics-tracker.session_key')));
     }
 
     /** @test */
@@ -55,6 +55,6 @@ class TrackedAnalyticsParametersTest extends TestCase
 
         $this->assertEquals([
             'referer' => 'spatie.be',
-        ], session()->get(config('laravel-analytics-tracker.session_key')));
+        ], session()->get(config('analytics-tracker.session_key')));
     }
 }
