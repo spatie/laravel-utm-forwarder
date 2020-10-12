@@ -8,7 +8,7 @@ Cross domain analytics is hard. This package helps you to keep track of the visi
 
 ## Support us
 
-[![Image](https://github-ads.s3.eu-central-1.amazonaws.com/laravel-utm-forwarder.jpg)](https://spatie.be/github-ad-click/laravel-utm-forwarder)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-utm-forwarder.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-utm-forwarder)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
