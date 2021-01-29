@@ -1,3 +1,5 @@
+## UNFINISHED & NOT ON PACKAGIST!
+
 # Keeps track of the original UTM (or other analytics) parameters
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-analytics-tracker.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-analytics-tracker)
